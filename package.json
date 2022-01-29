@@ -12,5 +12,8 @@
   "devDependencies": {
     "express": "^4.17.2",
     "puppeteer": "^13.1.2"
+  },
+  "engines": {
+    "node": "16.13.0"
   }
 }
