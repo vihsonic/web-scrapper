@@ -15,5 +15,9 @@
   },
   "engines": {
     "node": "16.13.0"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "puppeteer": "^13.1.2"
   }
 }
