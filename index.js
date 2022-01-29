@@ -15,6 +15,7 @@ const createGroups = (arr, numGroups) => {
       .map((_, i) => arr.slice(i * perGroup, (i + 1) * perGroup));
     return finalArr;
 }
+const countryList = [{"iso":"CHN","name":"China"},{"iso":"TWN","name":"Taipei and environs"},{"iso":"USA","name":"US"},{"iso":"JPN","name":"Japan"},{"iso":"THA","name":"Thailand"},{"iso":"KOR","name":"Korea, South"},{"iso":"SGP","name":"Singapore"},{"iso":"PHL","name":"Philippines"},{"iso":"MYS","name":"Malaysia"},{"iso":"VNM","name":"Vietnam"},{"iso":"AUS","name":"Australia"},{"iso":"MEX","name":"Mexico"},{"iso":"BRA","name":"Brazil"},{"iso":"COL","name":"Colombia"},{"iso":"FRA","name":"France"},{"iso":"NPL","name":"Nepal"},{"iso":"CAN","name":"Canada"},{"iso":"KHM","name":"Cambodia"},{"iso":"LKA","name":"Sri Lanka"},{"iso":"CIV","name":"Cote d'Ivoire"},{"iso":"DEU","name":"Germany"},{"iso":"FIN","name":"Finland"},{"iso":"ARE","name":"United Arab Emirates"},{"iso":"IND","name":"India"},{"iso":"ITA","name":"Italy"},{"iso":"GBR","name":"United Kingdom"},{"iso":"RUS","name":"Russia"},{"iso":"SWE","name":"Sweden"},{"iso":"ESP","name":"Spain"},{"iso":"BEL","name":"Belgium"},{"iso":"Others","name":"Others"},{"iso":"EGY","name":"Egypt"},{"iso":"IRN","name":"Iran"},{"iso":"ISR","name":"Israel"},{"iso":"LBN","name":"Lebanon"},{"iso":"IRQ","name":"Iraq"},{"iso":"OMN","name":"Oman"},{"iso":"AFG","name":"Afghanistan"},{"iso":"BHR","name":"Bahrain"},{"iso":"KWT","name":"Kuwait"},{"iso":"AUT","name":"Austria"},{"iso":"DZA","name":"Algeria"},{"iso":"HRV","name":"Croatia"},{"iso":"CHE","name":"Switzerland"},{"iso":"PAK","name":"Pakistan"},{"iso":"GEO","name":"Georgia"},{"iso":"GRC","name":"Greece"},{"iso":"MKD","name":"North Macedonia"},{"iso":"NOR","name":"Norway"},{"iso":"ROU","name":"Romania"},{"iso":"DNK","name":"Denmark"},{"iso":"EST","name":"Estonia"},{"iso":"NLD","name":"Netherlands"},{"iso":"SMR","name":"San Marino"},{"iso":"AZE","name":"Azerbaijan"},{"iso":"BLR","name":"Belarus"},{"iso":"ISL","name":"Iceland"},{"iso":"LTU","name":"Lithuania"},{"iso":"NZL","name":"New Zealand"},{"iso":"NGA","name":"Nigeria"},{"iso":"IRL","name":"Ireland"},{"iso":"LUX","name":"Luxembourg"},{"iso":"MCO","name":"Monaco"},{"iso":"QAT","name":"Qatar"},{"iso":"ECU","name":"Ecuador"},{"iso":"CZE","name":"Czechia"},{"iso":"ARM","name":"Armenia"},{"iso":"DOM","name":"Dominican Republic"},{"iso":"IDN","name":"Indonesia"},{"iso":"PRT","name":"Portugal"},{"iso":"AND","name":"Andorra"},{"iso":"LVA","name":"Latvia"},{"iso":"MAR","name":"Morocco"},{"iso":"SAU","name":"Saudi Arabia"},{"iso":"SEN","name":"Senegal"},{"iso":"ARG","name":"Argentina"},{"iso":"CHL","name":"Chile"},{"iso":"JOR","name":"Jordan"},{"iso":"UKR","name":"Ukraine"},{"iso":"BLM","name":"Saint Barthelemy"},{"iso":"HUN","name":"Hungary"},{"iso":"FRO","name":"Faroe Islands"},{"iso":"GIB","name":"Gibraltar"},{"iso":"LIE","name":"Liechtenstein"},{"iso":"POL","name":"Poland"},{"iso":"TUN","name":"Tunisia"},{"iso":"PSE","name":"West Bank and Gaza"},{"iso":"BIH","name":"Bosnia and Herzegovina"},{"iso":"SVN","name":"Slovenia"},{"iso":"ZAF","name":"South Africa"},{"iso":"BTN","name":"Bhutan"},{"iso":"CMR","name":"Cameroon"},{"iso":"CRI","name":"Costa Rica"},{"iso":"PER","name":"Peru"},{"iso":"SRB","name":"Serbia"},{"iso":"SVK","name":"Slovakia"},{"iso":"TGO","name":"Togo"},{"iso":"VAT","name":"Holy See"},{"iso":"GUF","name":"French Guiana"},{"iso":"MLT","name":"Malta"},{"iso":"MTQ","name":"Martinique"},{"iso":"BGR","name":"Bulgaria"},{"iso":"MDV","name":"Maldives"},{"iso":"BGD","name":"Bangladesh"},{"iso":"MDA","name":"Moldova"},{"iso":"PRY","name":"Paraguay"},{"iso":"ALB","name":"Albania"},{"iso":"CYP","name":"Cyprus"},{"iso":"BRN","name":"Brunei"},{"iso":"MAC","name":"Macao SAR"},{"iso":"MAF","name":"Saint Martin"},{"iso":"BFA","name":"Burkina Faso"},{"iso":"GGY-JEY","name":"Channel Islands"},{"iso":"MNG","name":"Mongolia"},{"iso":"PAN","name":"Panama"},{"iso":"cruise","name":"Cruise Ship"},{"iso":"TWN","name":"Taiwan*"},{"iso":"BOL","name":"Bolivia"},{"iso":"HND","name":"Honduras"},{"iso":"COD","name":"Congo"},{"iso":"JAM","name":"Jamaica"},{"iso":"REU","name":"Reunion"},{"iso":"TUR","name":"Turkey"},{"iso":"CUB","name":"Cuba"},{"iso":"GUY","name":"Guyana"},{"iso":"KAZ","name":"Kazakhstan"},{"iso":"CYM","name":"Cayman Islands"},{"iso":"GLP","name":"Guadeloupe"},{"iso":"ETH","name":"Ethiopia"},{"iso":"SDN","name":"Sudan"},{"iso":"GIN","name":"Guinea"},{"iso":"ATG","name":"Antigua and Barbuda"},{"iso":"ABW","name":"Aruba"},{"iso":"KEN","name":"Kenya"},{"iso":"URY","name":"Uruguay"},{"iso":"GHA","name":"Ghana"},{"iso":"JEY","name":"Jersey"},{"iso":"NAM","name":"Namibia"},{"iso":"SYC","name":"Seychelles"},{"iso":"TTO","name":"Trinidad and Tobago"},{"iso":"VEN","name":"Venezuela"},{"iso":"CUW","name":"Curacao"},{"iso":"SWZ","name":"Eswatini"},{"iso":"GAB","name":"Gabon"},{"iso":"GTM","name":"Guatemala"},{"iso":"GGY","name":"Guernsey"},{"iso":"MRT","name":"Mauritania"},{"iso":"RWA","name":"Rwanda"},{"iso":"LCA","name":"Saint Lucia"},{"iso":"VCT","name":"Saint Vincent and the Grenadines"},{"iso":"SUR","name":"Suriname"},{"iso":"RKS","name":"Kosovo"},{"iso":"CAF","name":"Central African Republic"},{"iso":"COG","name":"Congo (Brazzaville)"},{"iso":"GNQ","name":"Equatorial Guinea"},{"iso":"UZB","name":"Uzbekistan"},{"iso":"GUM","name":"Guam"},{"iso":"PRI","name":"Puerto Rico"},{"iso":"BEN","name":"Benin"},{"iso":"GRL","name":"Greenland"},{"iso":"LBR","name":"Liberia"},{"iso":"MYT","name":"Mayotte"},{"iso":"SOM","name":"Somalia"},{"iso":"TZA","name":"Tanzania"},{"iso":"BHS","name":"Bahamas"},{"iso":"BRB","name":"Barbados"},{"iso":"MNE","name":"Montenegro"},{"iso":"GMB","name":"Gambia"},{"iso":"KGZ","name":"Kyrgyzstan"},{"iso":"MUS","name":"Mauritius"},{"iso":"ZMB","name":"Zambia"},{"iso":"DJI","name":"Djibouti"},{"iso":"TCD","name":"Chad"},{"iso":"SLV","name":"El Salvador"},{"iso":"FJI","name":"Fiji"},{"iso":"NIC","name":"Nicaragua"},{"iso":"MDG","name":"Madagascar"},{"iso":"HTI","name":"Haiti"},{"iso":"AGO","name":"Angola"},{"iso":"CPV","name":"Cabo Verde"},{"iso":"NER","name":"Niger"},{"iso":"PNG","name":"Papua New Guinea"},{"iso":"ZWE","name":"Zimbabwe"},{"iso":"TLS","name":"Timor-Leste"},{"iso":"ERI","name":"Eritrea"},{"iso":"UGA","name":"Uganda"},{"iso":"DMA","name":"Dominica"},{"iso":"GRD","name":"Grenada"},{"iso":"MOZ","name":"Mozambique"},{"iso":"SYR","name":"Syria"},{"iso":"BLZ","name":"Belize"},{"iso":"LAO","name":"Laos"},{"iso":"LBY","name":"Libya"},{"iso":"NA-SHIP-DP","name":"Diamond Princess"},{"iso":"GNB","name":"Guinea-Bissau"},{"iso":"MLI","name":"Mali"},{"iso":"KNA","name":"Saint Kitts and Nevis"},{"iso":"BWA","name":"Botswana"},{"iso":"BDI","name":"Burundi"},{"iso":"SLE","name":"Sierra Leone"},{"iso":"MMR","name":"Burma"},{"iso":"MWI","name":"Malawi"},{"iso":"SSD","name":"South Sudan"},{"iso":"ESH","name":"Western Sahara"},{"iso":"STP","name":"Sao Tome and Principe"},{"iso":"NA-SHIP-MSZ","name":"MS Zaandam"},{"iso":"YEM","name":"Yemen"},{"iso":"COM","name":"Comoros"},{"iso":"TJK","name":"Tajikistan"},{"iso":"LSO","name":"Lesotho"},{"iso":"SLB","name":"Solomon Islands"},{"iso":"MHL","name":"Marshall Islands"},{"iso":"VUT","name":"Vanuatu"},{"iso":"WSM","name":"Samoa"},{"iso":"KIR","name":"Kiribati"},{"iso":"PLW","name":"Palau"},{"iso":"TON","name":"Tonga"}]
 
 const _TOTAL_CASES = {
     URL: "https://ourworldindata.org/explorers/coronavirus-data-explorer?tab=table&zoomToSelection=true&time=2020-03-01..latest&facet=none&uniformYAxis=0&pickerSort=asc&pickerMetric=location&Metric=Confirmed+cases&Interval=Cumulative&Relative+to+Population=false&Color+by+test+positivity=false&country=USA~GBR~CAN~DEU~ITA~IND"
@@ -127,13 +128,39 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             // console.log('last_update', last_update, 'last_update_total_cases', last_update_total_cases);
             total_cases = [last_update[0], last_update_total_cases[0]];
         }
+        // find and add iso
+        let iso;
+        countryList.filter(country => {
+            if (country.name === item[0]) {
+                iso = country.iso;
+            } else return;
+        })
+
+
         const dataV = {
             country: item[0],
             total_cases: total_cases,
+            iso: iso,
         }
         return dataV
     })
+    finalObj_total_cases.map(item => {
+        if (!item.iso) {
+            finalObj_total_cases.filter(country => {
+                if (!country.country) return;
+                if (country.country === item.country) {
+                    const new_iso = country.country.split(' ').join('_');
+                    item.iso = new_iso;
+                } else return;
+            })
+        }
+    })
     // console.log(finalObj_total_cases);
+    const total_cases_to_write = { "total_cases": finalObj_total_cases };
+    fs.writeFile('./data/total_cases.json', JSON.stringify(total_cases_to_write), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!', 'total_cases');
+    });
 
     const browser_total_deaths = await puppeteer.launch({headless:true})
     const page_total_deaths = await browser_total_deaths.newPage()
@@ -158,13 +185,39 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             // console.log('last_update', last_update, 'last_update_total_deaths', last_update_total_deaths);
             total_deaths = [last_update[0], last_update_total_deaths[0]];
         }
+        // find and add iso
+        let iso;
+        countryList.filter(country => {
+            if (country.name === item[0]) {
+                iso = country.iso;
+            } else return;
+        })
+
+
         const dataV = {
             country: item[0],
             total_deaths: total_deaths,
+            iso: iso,
         }
         return dataV
-    })
+    }) 
+    finalObj_total_deaths.map(item => {
+        if (!item.iso) {
+            finalObj_total_deaths.filter(country => {
+                if (!country.country) return;
+                if (country.country === item.country) {
+                    const new_iso = country.country.split(' ').join('_');
+                    item.iso = new_iso;
+                } else return;
+            })
+        }
+    }) 
     // console.log(finalObj_total_deaths);
+    const total_deaths_to_write = { "total_deaths": finalObj_total_deaths };
+    fs.writeFile('./data/total_deaths.json', JSON.stringify(total_deaths_to_write), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!', 'total_deaths');
+    });
 
     const browser_current_hospitalized = await puppeteer.launch({headless:true})
     const page_current_hospitalized = await browser_current_hospitalized.newPage()
@@ -189,13 +242,39 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             // console.log('last_update', last_update, 'last_update_current_hospitalized', last_update_current_hospitalized);
             current_hospitalized = [last_update[0], last_update_current_hospitalized[0]];
         }
+        // find and add iso
+        let iso;
+        countryList.filter(country => {
+            if (country.name === item[0]) {
+                iso = country.iso;
+            } else return;
+        })
+
+
         const dataV = {
             country: item[0],
             current_hospitalized: current_hospitalized,
+            iso: iso,
         }
         return dataV
     })
+    finalObj_current_hospitalized.map(item => {
+        if (!item.iso) {
+            finalObj_current_hospitalized.filter(country => {
+                if (!country.country) return;
+                if (country.country === item.country) {
+                    const new_iso = country.country.split(' ').join('_');
+                    item.iso = new_iso;
+                } else return;
+            })
+        }
+    })
     // console.log(finalObj_current_hospitalized);
+    const current_hospitalized_to_write = { "current_hospitalized": finalObj_current_hospitalized };
+    fs.writeFile('./data/current_hospitalized.json', JSON.stringify(current_hospitalized_to_write), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!', 'current_hospitalized');
+    });
 
     const browser_current_icu = await puppeteer.launch({headless:true})
     const page_current_icu = await browser_current_icu.newPage()
@@ -220,13 +299,39 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             // console.log('last_update', last_update, 'last_update_current_icu', last_update_current_icu);
             current_icu = [last_update[0], last_update_current_icu[0]];
         }
+        // find and add iso
+        let iso;
+        countryList.filter(country => {
+            if (country.name === item[0]) {
+                iso = country.iso;
+            } else return;
+        })
+
+
         const dataV = {
             country: item[0],
             current_icu: current_icu,
+            iso: iso,
         }
         return dataV
     })
+    finalObj_current_icu.map(item => {
+        if (!item.iso) {
+            finalObj_current_icu.filter(country => {
+                if (!country.country) return;
+                if (country.country === item.country) {
+                    const new_iso = country.country.split(' ').join('_');
+                    item.iso = new_iso;
+                } else return;
+            })
+        }
+    })
     // console.log(finalObj_current_icu);
+    const current_icu_to_write = { "current_icu": finalObj_current_icu };
+    fs.writeFile('./data/current_icu.json', JSON.stringify(current_icu_to_write), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!', 'current_icu');
+    });
 
     const browser_cases = await puppeteer.launch({headless:true})
     const page_cases = await browser_cases.newPage()
@@ -248,13 +353,39 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             // console.log('last_update', last_update, 'last_update_cases', last_update_cases);
             cases = [last_update[0], last_update_cases[0]];
         }
+        // find and add iso
+        let iso;
+        countryList.filter(country => {
+            if (country.name === item[0]) {
+                iso = country.iso;
+            } else return;
+        })
+
+
         const dataV = {
             country: item[0],
-            new_cases: cases,
+            cases: cases,
+            iso: iso,
         }
         return dataV
-    });
+    })
+    finalObj_cases.map(item => {
+        if (!item.iso) {
+            finalObj_cases.filter(country => {
+                if (!country.country) return;
+                if (country.country === item.country) {
+                    const new_iso = country.country.split(' ').join('_');
+                    item.iso = new_iso;
+                } else return;
+            })
+        }
+    })
     // console.log(finalObj_cases);
+    const cases_to_write = { "cases": finalObj_cases };
+    fs.writeFile('./data/cases.json', JSON.stringify(cases_to_write), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!', 'cases');
+    });
     
     const browser_deaths = await puppeteer.launch({headless:true})
     const page_deaths = await browser_deaths.newPage()
@@ -276,13 +407,39 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             // console.log('last_update', last_update, 'last_update_deaths', last_update_deaths);
             deaths = [last_update[0], last_update_deaths[0]];
         }
+        // find and add iso
+        let iso;
+        countryList.filter(country => {
+            if (country.name === item[0]) {
+                iso = country.iso;
+            } else return;
+        })
+
+
         const dataV = {
             country: item[0],
-            new_deaths: deaths,
+            deaths: deaths,
+            iso: iso,
         }
         return dataV
     })
+    finalObj_deaths.map(item => {
+        if (!item.iso) {
+            finalObj_deaths.filter(country => {
+                if (!country.country) return;
+                if (country.country === item.country) {
+                    const new_iso = country.country.split(' ').join('_');
+                    item.iso = new_iso;
+                } else return;
+            })
+        }
+    })
     //console.log(finalObj_deaths);
+    const deaths_to_write = { "deaths": finalObj_deaths };
+    fs.writeFile('./data/deaths.json', JSON.stringify(deaths_to_write), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!', 'deaths');
+    });
 
     const browser_death_rate_7 = await puppeteer.launch({headless:true})
     const page_death_rate_7 = await browser_death_rate_7.newPage()
@@ -304,13 +461,39 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             death_rate_7 = [last_update[0], last_update_death_rate_7[0]];
             // console.log('last_update', last_update, 'last_update_death_rate_7', last_update_death_rate_7);
         }
+        // find and add iso
+        let iso;
+        countryList.filter(country => {
+            if (country.name === item[0]) {
+                iso = country.iso;
+            } else return;
+        })
+
+
         const dataV = {
             country: item[0],
             death_rate_7: death_rate_7,
+            iso: iso,
         }
         return dataV
     })
+    finalObj_death_rate_7.map(item => {
+        if (!item.iso) {
+            finalObj_death_rate_7.filter(country => {
+                if (!country.country) return;
+                if (country.country === item.country) {
+                    const new_iso = country.country.split(' ').join('_');
+                    item.iso = new_iso;
+                } else return;
+            })
+        }
+    })
     // console.log(finalObj_death_rate_7);
+    const death_rate_7_to_write = { "death_rate_7": finalObj_death_rate_7 };
+    fs.writeFile('./data/death_rate_7.json', JSON.stringify(death_rate_7_to_write), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!', 'death_rate_7');
+    });
 
     const browser_cumulative_death_rate = await puppeteer.launch({headless:true})
     const page_cumulative_death_rate = await browser_cumulative_death_rate.newPage()
@@ -332,13 +515,39 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             // console.log('last_update', last_update, 'last_update_cumulative_death_rate', last_update_cumulative_death_rate);
             cumulative_death_rate = [last_update[0], last_update_cumulative_death_rate[0]];
         }
+        // find and add iso
+        let iso;
+        countryList.filter(country => {
+            if (country.name === item[0]) {
+                iso = country.iso;
+            } else return;
+        })
+
+
         const dataV = {
             country: item[0],
             cumulative_death_rate: cumulative_death_rate,
+            iso: iso,
         }
         return dataV
     })
+    finalObj_cumulative_death_rate.map(item => {
+        if (!item.iso) {
+            finalObj_cumulative_death_rate.filter(country => {
+                if (!country.country) return;
+                if (country.country === item.country) {
+                    const new_iso = country.country.split(' ').join('_');
+                    item.iso = new_iso;
+                } else return;
+            })
+        }
+    })
     // console.log(finalObj_cumulative_death_rate);
+    const cumulative_death_rate_to_write = { "cumulative_death_rate": finalObj_cumulative_death_rate };
+    fs.writeFile('./data/cumulative_death_rate.json', JSON.stringify(cumulative_death_rate_to_write), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!', 'cumulative_death_rate');
+    });
 
     const browser_new_tests = await puppeteer.launch({headless:true})
     const page_new_tests = await browser_new_tests.newPage()
@@ -363,13 +572,39 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             // console.log('last_update', last_update, 'last_update_new_tests', last_update_new_tests);
             new_tests = [last_update[0], last_update_new_tests[0]];
         }
+        // find and add iso
+        let iso;
+        countryList.filter(country => {
+            if (country.name === item[0]) {
+                iso = country.iso;
+            } else return;
+        })
+
+
         const dataV = {
             country: item[0],
             new_tests: new_tests,
+            iso: iso,
         }
         return dataV
     })
+    finalObj_new_tests.map(item => {
+        if (!item.iso) {
+            finalObj_new_tests.filter(country => {
+                if (!country.country) return;
+                if (country.country === item.country) {
+                    const new_iso = country.country.split(' ').join('_');
+                    item.iso = new_iso;
+                } else return;
+            })
+        }
+    })
     // console.log(finalObj_new_tests);
+    const new_tests_to_write = { "new_tests": finalObj_new_tests };
+    fs.writeFile('./data/new_tests.json', JSON.stringify(new_tests_to_write), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!', 'new_tests');
+    });
 
     const browser_vaccines_administered = await puppeteer.launch({headless:true})
     const page_vaccines_administered = await browser_vaccines_administered.newPage()
@@ -394,13 +629,39 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             // console.log('last_update', last_update, 'last_update_vaccines_administered', last_update_vaccines_administered);
             vaccines_administered = [last_update[0], last_update_vaccines_administered[0]];
         }
+        // find and add iso
+        let iso;
+        countryList.filter(country => {
+            if (country.name === item[0]) {
+                iso = country.iso;
+            } else return;
+        })
+
+
         const dataV = {
             country: item[0],
             vaccines_administered: vaccines_administered,
+            iso: iso,
         }
         return dataV
     })
+    finalObj_vaccines_administered.map(item => {
+        if (!item.iso) {
+            finalObj_vaccines_administered.filter(country => {
+                if (!country.country) return;
+                if (country.country === item.country) {
+                    const new_iso = country.country.split(' ').join('_');
+                    item.iso = new_iso;
+                } else return;
+            })
+        }
+    })
     // console.log(finalObj_vaccines_administered);
+    const vaccines_administered_to_write = { "vaccines_administered": finalObj_vaccines_administered };
+    fs.writeFile('./data/vaccines_administered.json', JSON.stringify(vaccines_administered_to_write), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!', 'vaccines_administered');
+    });
 
     const browser_people_fully_vaccinated = await puppeteer.launch({headless:true})
     const page_people_fully_vaccinated = await browser_people_fully_vaccinated.newPage()
@@ -425,21 +686,46 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             // console.log('last_update', last_update, 'last_update_people_fully_vaccinated', last_update_people_fully_vaccinated);
             people_fully_vaccinated = [last_update[0], last_update_people_fully_vaccinated[0]];
         }
+        // find and add iso
+        let iso;
+        countryList.filter(country => {
+            if (country.name === item[0]) {
+                iso = country.iso;
+            } else return;
+        })
+
+
         const dataV = {
             country: item[0],
             people_fully_vaccinated: people_fully_vaccinated,
+            iso: iso,
         }
         return dataV
     })
+    finalObj_people_fully_vaccinated.map(item => {
+        if (!item.iso) {
+            finalObj_people_fully_vaccinated.filter(country => {
+                if (!country.country) return;
+                if (country.country === item.country) {
+                    const new_iso = country.country.split(' ').join('_');
+                    item.iso = new_iso;
+                } else return;
+            })
+        }
+    })
     // console.log(finalObj_people_fully_vaccinated);
+    const people_fully_vaccinated_to_write = { "people_fully_vaccinated": finalObj_people_fully_vaccinated };
+    fs.writeFile('./data/people_fully_vaccinated.json', JSON.stringify(people_fully_vaccinated_to_write), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!', 'people_fully_vaccinated');
+    });
 
 
     final.push({ "total_cases": finalObj_total_cases }, { "total_deaths": finalObj_total_deaths }, { "total_hospitalized": finalObj_current_hospitalized }, { "total_icu": finalObj_current_icu }, { "daily_cases": finalObj_cases }, { "daily_deaths": finalObj_deaths }, { "fatality_rate_7_day_avg": finalObj_death_rate_7 }, { "cumulative_fatality_rate": finalObj_cumulative_death_rate }, { "daily_tests": finalObj_new_tests }, { "vaccines_administered": finalObj_vaccines_administered }, { "fully_vaccinated_people": finalObj_people_fully_vaccinated });
-    fs.writeFile('./data.json', JSON.stringify(final), (err) => {
+    fs.writeFile('./data/data.json', JSON.stringify(final), (err) => {
         if (err) throw err;
         console.log('The file has been saved!');
     });
-    console.log(final);
 }
 
 
