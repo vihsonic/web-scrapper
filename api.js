@@ -8,9 +8,9 @@ const current_hospitalized = require('./data/current_hospitalized.json');
 const current_icu = require('./data/current_icu.json');
 const cases = require('./data/cases.json');
 const deaths = require('./data/deaths.json');
-const death_rate_7 = require('./data/death_rate_7.json');
+const death_rate_7 = require('./data/death_rate_7.json'); // BROKEN
 const cumulative_death_rate = require('./data/cumulative_death_rate.json');
-const new_tests = require('./data/new_tests.json');
+const new_tests = require('./data/new_tests.json'); // BROKEN
 const vaccines_administered = require('./data/vaccines_administered.json');
 const people_fully_vaccinated = require('./data/people_fully_vaccinated.json');
 
