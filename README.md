@@ -9,12 +9,21 @@
 To use the app, run the following commands:
 
 ```mkdir covid-web-scraper-and-api```
+
 ```cd covid-web-scraper-and-api```
+
 ```git init```
+
 ```git clone https://github.com/bracesproul/Web-scraper-and-API.git```
+
 ```npm install express --save```
-`````npm install puppeteer --save```
-```node index.js``` *(wait until this finishes)*
+
+```npm install puppeteer --save```
+
+```node index.js``` 
+
+*(wait until this finishes)*
+
 ```node api.js```
 
 You should then see the output ```Listening on port http://localhost3000```
