@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const data = require('./data/data.json');
 const total_cases = require('./data/total_cases.json');
 const total_deaths = require('./data/total_deaths.json');
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Listening on port http://localhost${port}`);
+    console.log(`Listening on port http://localhost:${port}`);
 })
 
 app.get('/data', (req, res) => {
