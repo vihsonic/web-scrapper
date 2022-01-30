@@ -9,7 +9,7 @@ const current_icu = require('./data/current_icu.json');
 const cases = require('./data/cases.json');
 const deaths = require('./data/deaths.json');
 const death_rate_7 = require('./data/death_rate_7.json'); // BROKEN
-const cumulative_death_rate = require('./data/cumulative_death_rate.json');
+const cumulative_fatality_rate = require('./data/cumulative_fatality_rate.json');
 const new_tests = require('./data/new_tests.json'); // BROKEN
 const vaccines_administered = require('./data/vaccines_administered.json');
 const people_fully_vaccinated = require('./data/people_fully_vaccinated.json');
@@ -55,8 +55,8 @@ app.get('/death_rate_7', (req, res) => {
     res.send(death_rate_7)
 });
 
-app.get('/cumulative_death_rate', (req, res) => {
-    res.send(cumulative_death_rate)
+app.get('/cumulative_fatality_rate', (req, res) => {
+    res.send(cumulative_fatality_rate)
 });
 
 app.get('/new_tests', (req, res) => {

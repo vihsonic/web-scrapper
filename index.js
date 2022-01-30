@@ -102,7 +102,7 @@ const _PEOPLE_FULLY_VACCINATED = {
     COUNTRY_NAME_TYPE: "td"
 }
 
-const getData = async (total_cases, total_deaths, current_hospitalized, current_icu, cases, deaths, death_rate_7, cumulative_death_rate, new_tests, vaccines_administered, people_fully_vaccinated) => {
+const getData = async (total_cases, total_deaths, current_hospitalized, current_icu, cases, deaths, death_rate_7, cumulative_fatality_rate, new_tests, vaccines_administered, people_fully_vaccinated) => {
     let final = [];
 
     const browser_total_cases = await puppeteer.launch({headless:true})
@@ -495,25 +495,25 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
         console.log('The file has been saved!', 'death_rate_7');
     });
 
-    const browser_cumulative_death_rate = await puppeteer.launch({headless:true})
-    const page_cumulative_death_rate = await browser_cumulative_death_rate.newPage()
-    await page_cumulative_death_rate.goto(cumulative_death_rate.URL, { waitUntil: 'networkidle2' });
-    const options_cumulative_death_rate = await page_cumulative_death_rate.$$eval('table[class="data-table"] > tbody > tr > td', (options_cumulative_death_rate) =>
-        options_cumulative_death_rate.map((option_cumulative_death_rate) => option_cumulative_death_rate.textContent)
+    const browser_cumulative_fatality_rate = await puppeteer.launch({headless:true})
+    const page_cumulative_fatality_rate = await browser_cumulative_fatality_rate.newPage()
+    await page_cumulative_fatality_rate.goto(cumulative_fatality_rate.URL, { waitUntil: 'networkidle2' });
+    const options_cumulative_fatality_rate = await page_cumulative_fatality_rate.$$eval('table[class="data-table"] > tbody > tr > td', (options_cumulative_fatality_rate) =>
+        options_cumulative_fatality_rate.map((option_cumulative_fatality_rate) => option_cumulative_fatality_rate.textContent)
     );
-    await browser_cumulative_death_rate.close();
-    const finalData_cumulative_death_rate = createGroups(options_cumulative_death_rate, 228);
-    const finalObj_cumulative_death_rate = finalData_cumulative_death_rate.map(item => {
-        let cumulative_death_rate = item[2];
-        if (!cumulative_death_rate) {
-            cumulative_death_rate = 0;
-        } else if (cumulative_death_rate.includes(", 2022") || cumulative_death_rate.includes(", 2021") || cumulative_death_rate.includes(", 2020")) {
+    await browser_cumulative_fatality_rate.close();
+    const finalData_cumulative_fatality_rate = createGroups(options_cumulative_fatality_rate, 228);
+    const finalObj_cumulative_fatality_rate = finalData_cumulative_fatality_rate.map(item => {
+        let cumulative_fatality_rate = item[2];
+        if (!cumulative_fatality_rate) {
+            cumulative_fatality_rate = 0;
+        } else if (cumulative_fatality_rate.includes(", 2022") || cumulative_fatality_rate.includes(", 2021") || cumulative_fatality_rate.includes(", 2020")) {
             let last_update = [];
-            let last_update_cumulative_death_rate = [];
-            last_update.push(cumulative_death_rate.substring(0, 12));
-            last_update_cumulative_death_rate.push(cumulative_death_rate.substring(13));
-            // console.log('last_update', last_update, 'last_update_cumulative_death_rate', last_update_cumulative_death_rate);
-            cumulative_death_rate = [last_update[0], last_update_cumulative_death_rate[0]];
+            let last_update_cumulative_fatality_rate = [];
+            last_update.push(cumulative_fatality_rate.substring(0, 12));
+            last_update_cumulative_fatality_rate.push(cumulative_fatality_rate.substring(13));
+            // console.log('last_update', last_update, 'last_update_cumulative_fatality_rate', last_update_cumulative_fatality_rate);
+            cumulative_fatality_rate = [last_update[0], last_update_cumulative_fatality_rate[0]];
         }
         // find and add iso
         let iso;
@@ -526,14 +526,14 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
 
         const dataV = {
             country: item[0],
-            cumulative_death_rate: cumulative_death_rate,
+            cumulative_fatality_rate: cumulative_fatality_rate,
             iso: iso,
         }
         return dataV
     })
-    finalObj_cumulative_death_rate.map(item => {
+    finalObj_cumulative_fatality_rate.map(item => {
         if (!item.iso) {
-            finalObj_cumulative_death_rate.filter(country => {
+            finalObj_cumulative_fatality_rate.filter(country => {
                 if (!country.country) return;
                 if (country.country === item.country) {
                     const new_iso = country.country.split(' ').join('_');
@@ -542,11 +542,11 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
             })
         }
     })
-    // console.log(finalObj_cumulative_death_rate);
-    const cumulative_death_rate_to_write = { "cumulative_death_rate": finalObj_cumulative_death_rate };
-    fs.writeFile('./data/cumulative_death_rate.json', JSON.stringify(cumulative_death_rate_to_write), (err) => {
+    // console.log(finalObj_cumulative_fatality_rate);
+    const cumulative_fatality_rate_to_write = { "cumulative_fatality_rate": finalObj_cumulative_fatality_rate };
+    fs.writeFile('./data/cumulative_fatality_rate.json', JSON.stringify(cumulative_fatality_rate_to_write), (err) => {
         if (err) throw err;
-        console.log('The file has been saved!', 'cumulative_death_rate');
+        console.log('The file has been saved!', 'cumulative_fatality_rate');
     });
 
     const browser_new_tests = await puppeteer.launch({headless:true})
@@ -721,7 +721,7 @@ const getData = async (total_cases, total_deaths, current_hospitalized, current_
     });
 
 
-    final.push({ "total_cases": finalObj_total_cases }, { "total_deaths": finalObj_total_deaths }, { "total_hospitalized": finalObj_current_hospitalized }, { "total_icu": finalObj_current_icu }, { "daily_cases": finalObj_cases }, { "daily_deaths": finalObj_deaths }, { "fatality_rate_7_day_avg": finalObj_death_rate_7 }, { "cumulative_fatality_rate": finalObj_cumulative_death_rate }, { "daily_tests": finalObj_new_tests }, { "vaccines_administered": finalObj_vaccines_administered }, { "fully_vaccinated_people": finalObj_people_fully_vaccinated });
+    final.push({ "total_cases": finalObj_total_cases }, { "total_deaths": finalObj_total_deaths }, { "total_hospitalized": finalObj_current_hospitalized }, { "total_icu": finalObj_current_icu }, { "daily_cases": finalObj_cases }, { "daily_deaths": finalObj_deaths }, { "fatality_rate_7_day_avg": finalObj_death_rate_7 }, { "cumulative_fatality_rate": finalObj_cumulative_fatality_rate }, { "daily_tests": finalObj_new_tests }, { "vaccines_administered": finalObj_vaccines_administered }, { "fully_vaccinated_people": finalObj_people_fully_vaccinated });
     fs.writeFile('./data/data.json', JSON.stringify(final), (err) => {
         if (err) throw err;
         console.log('The file has been saved!');
