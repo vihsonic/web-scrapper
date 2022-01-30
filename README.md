@@ -24,36 +24,36 @@ To use the app, run the following commands:
 
 *(wait until this finishes)*
 
-```node api.js```
+```node server.js```
 
-You should then see the output ```Listening on port http://localhost:3000/```
-Naviage to [http://localhost:3000/data](http://localhost:3000/data) to request all data
+You should then see the output ```Listening on port http://localhost:3001/```
+Naviage to [http://localhost:3001/get-data/data](http://localhost:3001/get-data/data) to request all data
 
 
 ## API Routes
-*URL*/data - Returns all data
+*URL*/get-data/data - Returns all data
 
-*URL*/cases - Returns total cases
+*URL*/get-data/cases - Returns total cases
 
-*URL*/deaths - Returns total deaths
+*URL*/get-data/deaths - Returns total deaths
 
-*URL*/new_cases - Returns new cases from previous day
+*URL*/get-data/new_cases - Returns new cases from previous day
 
-*URL*/new_deaths - Returns new deaths from previous day
+*URL*/get-data/new_deaths - Returns new deaths from previous day
 
-*URL*/cumulative_death_rate - Returns cumulative death rate
+*URL*/get-data/cumulative_fatality_rate - Returns cumulative death rate
 
-*URL*/death_rate_7 - Returns averge death rate for the last 7 days
+*URL*/get-data/death_rate_7 - Returns averge death rate for the last 7 days
 
-*URL*/new_tests - Returns new tests from previous day
+*URL*/get-data/new_tests - Returns new tests from previous day
 
-*URL*/vaccines_administered - Returns total vaccines administered
+*URL*/get-data/vaccines_administered - Returns total vaccines administered
 
-*URL*/people_fully_vaccinated - Returns total people fully vaccinated
+*URL*/get-data/people_fully_vaccinated - Returns total people fully vaccinated
 
-*URL*/current_hospitalized - Returns total amount of people currently hospitalized
+*URL*/get-data/current_hospitalized - Returns total amount of people currently hospitalized
 
-*URL*/current_icu - Returns total amount of people currently in the ICU
+*URL*/get-data/current_icu - Returns total amount of people currently in the ICU
 
 
 ## Citation
