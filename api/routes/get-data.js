@@ -37,7 +37,6 @@ const default_response = {
 
 router.get('/', (req, res) => {
     res.send(default_response);
-    console.log(req);
 })
 
 

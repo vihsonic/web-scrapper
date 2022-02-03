@@ -7,6 +7,7 @@ Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.
 
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+const { deepStrictEqual } = require('assert');
 
 const createGroups = (arr, numGroups) => {
     const perGroup = Math.ceil(arr.length / numGroups);
@@ -166,7 +167,7 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         }
     })
     const total_cases_to_write = { "total_cases": finalObj_total_cases };
-    fs.writeFile('../data/total_cases.json', JSON.stringify(total_cases_to_write), (err) => {
+    fs.writeFile('./data/total_cases.json', JSON.stringify(total_cases_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'total_cases');
     });
@@ -217,7 +218,7 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         }
     }) 
     const total_deaths_to_write = { "total_deaths": finalObj_total_deaths };
-    fs.writeFile('../data/total_deaths.json', JSON.stringify(total_deaths_to_write), (err) => {
+    fs.writeFile('./data/total_deaths.json', JSON.stringify(total_deaths_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'total_deaths');
     });
@@ -268,7 +269,7 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         }
     })
     const current_hospitalized_to_write = { "current_hospitalized": finalObj_current_hospitalized };
-    fs.writeFile('../data/current_hospitalized.json', JSON.stringify(current_hospitalized_to_write), (err) => {
+    fs.writeFile('./data/current_hospitalized.json', JSON.stringify(current_hospitalized_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'current_hospitalized');
     });
@@ -319,7 +320,7 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         }
     })
     const current_icu_to_write = { "current_icu": finalObj_current_icu };
-    fs.writeFile('../data/current_icu.json', JSON.stringify(current_icu_to_write), (err) => {
+    fs.writeFile('./data/current_icu.json', JSON.stringify(current_icu_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'current_icu');
     });
@@ -370,7 +371,7 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         }
     })
     const cases_to_write = { "cases": finalObj_cases };
-    fs.writeFile('../data/cases.json', JSON.stringify(cases_to_write), (err) => {
+    fs.writeFile('./data/cases.json', JSON.stringify(cases_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'cases');
     });
@@ -421,7 +422,7 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         }
     })
     const deaths_to_write = { "deaths": finalObj_deaths };
-    fs.writeFile('../data/deaths.json', JSON.stringify(deaths_to_write), (err) => {
+    fs.writeFile('./data/deaths.json', JSON.stringify(deaths_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'deaths');
     });
@@ -472,7 +473,7 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         }
     })
     const death_rate_7_to_write = { "death_rate_7": finalObj_death_rate_7 };
-    fs.writeFile('../data/death_rate_7.json', JSON.stringify(death_rate_7_to_write), (err) => {
+    fs.writeFile('./data/death_rate_7.json', JSON.stringify(death_rate_7_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'death_rate_7');
     });
@@ -524,7 +525,7 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         }
     })
     const cumulative_fatality_rate_to_write = { "cumulative_fatality_rate": finalObj_cumulative_fatality_rate };
-    fs.writeFile('../data/cumulative_fatality_rate.json', JSON.stringify(cumulative_fatality_rate_to_write), (err) => {
+    fs.writeFile('./data/cumulative_fatality_rate.json', JSON.stringify(cumulative_fatality_rate_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'cumulative_fatality_rate');
     });
@@ -575,7 +576,7 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         }
     })
     const new_tests_to_write = { "new_tests": finalObj_new_tests };
-    fs.writeFile('../data/new_tests.json', JSON.stringify(new_tests_to_write), (err) => {
+    fs.writeFile('./data/new_tests.json', JSON.stringify(new_tests_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'new_tests');
     });
@@ -627,7 +628,7 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         }
     })
     const vaccines_administered_to_write = { "vaccines_administered": finalObj_vaccines_administered };
-    fs.writeFile('../data/vaccines_administered.json', JSON.stringify(vaccines_administered_to_write), (err) => {
+    fs.writeFile('./data/vaccines_administered.json', JSON.stringify(vaccines_administered_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'vaccines_administered');
     });
@@ -679,14 +680,14 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         }
     })
     const people_fully_vaccinated_to_write = { "people_fully_vaccinated": finalObj_people_fully_vaccinated };
-    fs.writeFile('../data/people_fully_vaccinated.json', JSON.stringify(people_fully_vaccinated_to_write), (err) => {
+    fs.writeFile('./data/people_fully_vaccinated.json', JSON.stringify(people_fully_vaccinated_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'people_fully_vaccinated');
     });
 
 
     final.push({ "total_cases": finalObj_total_cases }, { "total_deaths": finalObj_total_deaths }, { "total_hospitalized": finalObj_current_hospitalized }, { "total_icu": finalObj_current_icu }, { "daily_cases": finalObj_cases }, { "daily_deaths": finalObj_deaths }, { "fatality_rate_7_day_avg": finalObj_death_rate_7 }, { "cumulative_fatality_rate": finalObj_cumulative_fatality_rate }, { "daily_tests": finalObj_new_tests }, { "vaccines_administered": finalObj_vaccines_administered }, { "fully_vaccinated_people": finalObj_people_fully_vaccinated });
-    fs.writeFile('../data/data.json', JSON.stringify(final), (err) => {
+    fs.writeFile('./data/data.json', JSON.stringify(final), (err) => {
         if (err) throw err;
         console.log('The file has been saved!');
     });
