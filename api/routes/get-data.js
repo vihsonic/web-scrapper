@@ -14,9 +14,30 @@ const new_tests = require('../../data/new_tests.json'); // BROKEN
 const vaccines_administered = require('../../data/vaccines_administered.json');
 const people_fully_vaccinated = require('../../data/people_fully_vaccinated.json');
 
+const default_response = {
+    request: "GET",
+    status: 200,
+    message: "Success",
+    urls: {
+        all_data: "https://covid-data-and-api.herokuapp.com/get-data/data",
+        total_cases: "https://covid-data-and-api.herokuapp.com/get-data/total_cases",
+        total_deaths: "https://covid-data-and-api.herokuapp.com/get-data/total_deaths",
+        current_hospitalized: "https://covid-data-and-api.herokuapp.com/get-data/current_hospitalized",
+        current_icu: "https://covid-data-and-api.herokuapp.com/get-data/current_icu",
+        daily_cases: "https://covid-data-and-api.herokuapp.com/get-data/cases",
+        daily_deaths: "https://covid-data-and-api.herokuapp.com/get-data/deaths",
+        death_rate_7: "https://covid-data-and-api.herokuapp.com/get-data/death_rate_7",
+        cumulative_fatality_rate: "https://covid-data-and-api.herokuapp.com/get-data/cumulative_fatality_rate",
+        new_tests: "https://covid-data-and-api.herokuapp.com/get-data/new_tests",
+        vaccines_administered: "https://covid-data-and-api.herokuapp.com/get-data/vaccines_administered",
+        people_fully_vaccinated: "https://covid-data-and-api.herokuapp.com/get-data/people_fully_vaccinated"
+    },
+    request_date: new Date().toLocaleString()
+}
 
 router.get('/', (req, res) => {
-    res.send('hello world');
+    res.send(default_response);
+    console.log(req);
 })
 
 

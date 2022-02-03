@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const routes = require('./api/routes/get-data');
+const routes = require('../api/routes/get-data');
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');

@@ -127,12 +127,9 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         options_total_cases.map((option_total_cases) => option_total_cases.textContent)
     );
     await browser_total_cases.close();
-    // console.log(options_total_cases.length);
     const finalData_total_cases = createGroups(options_total_cases, 228);
-    // console.log(finalData_total_cases);
     const finalObj_total_cases = finalData_total_cases.map(item => {
         let total_cases = item[2];
-        // console.log(total_cases);
         if (!total_cases) {
             total_cases = 0;
         } else if (total_cases.includes(", 2022") || total_cases.includes(", 2021") || total_cases.includes(", 2020")) {
@@ -140,17 +137,14 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             let last_update_total_cases = [];
             last_update.push(total_cases.substring(0, 12));
             last_update_total_cases.push(total_cases.substring(13));
-            // console.log('last_update', last_update, 'last_update_total_cases', last_update_total_cases);
             total_cases = [last_update[0], last_update_total_cases[0]];
         }
-        // find and add iso
         let iso;
         countryList.filter(country => {
             if (country.name === item[0]) {
                 iso = country.iso;
             } else return;
         })
-
 
         const dataV = {
             country: item[0],
@@ -171,9 +165,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             })
         }
     })
-    // console.log(finalObj_total_cases);
     const total_cases_to_write = { "total_cases": finalObj_total_cases };
-    fs.writeFile('./data/total_cases.json', JSON.stringify(total_cases_to_write), (err) => {
+    fs.writeFile('../data/total_cases.json', JSON.stringify(total_cases_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'total_cases');
     });
@@ -185,12 +178,9 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         options_total_deaths.map((option_total_deaths) => option_total_deaths.textContent)
     );
     await browser_total_deaths.close();
-    // console.log(options_total_deaths.length);
     const finalData_total_deaths = createGroups(options_total_deaths, 228);
-    // console.log(finalData_total_deaths);
     const finalObj_total_deaths = finalData_total_deaths.map(item => {
         let total_deaths = item[2];
-        // console.log(total_deaths);
         if (!total_deaths) {
             total_deaths = 0;
         } else if (total_deaths.includes(", 2022") || total_deaths.includes(", 2021") || total_deaths.includes(", 2020")) {
@@ -198,17 +188,14 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             let last_update_total_deaths = [];
             last_update.push(total_deaths.substring(0, 12));
             last_update_total_deaths.push(total_deaths.substring(13));
-            // console.log('last_update', last_update, 'last_update_total_deaths', last_update_total_deaths);
             total_deaths = [last_update[0], last_update_total_deaths[0]];
         }
-        // find and add iso
         let iso;
         countryList.filter(country => {
             if (country.name === item[0]) {
                 iso = country.iso;
             } else return;
         })
-
 
         const dataV = {
             country: item[0],
@@ -229,9 +216,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             })
         }
     }) 
-    // console.log(finalObj_total_deaths);
     const total_deaths_to_write = { "total_deaths": finalObj_total_deaths };
-    fs.writeFile('./data/total_deaths.json', JSON.stringify(total_deaths_to_write), (err) => {
+    fs.writeFile('../data/total_deaths.json', JSON.stringify(total_deaths_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'total_deaths');
     });
@@ -243,12 +229,9 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         options_current_hospitalized.map((option_current_hospitalized) => option_current_hospitalized.textContent)
     );
     await browser_current_hospitalized.close();
-    // console.log(options_current_hospitalized.length);
     const finalData_current_hospitalized = createGroups(options_current_hospitalized, 36);
-    // console.log(finalData_current_hospitalized);
     const finalObj_current_hospitalized = finalData_current_hospitalized.map(item => {
         let current_hospitalized = item[2];
-        // console.log(current_hospitalized);
         if (!current_hospitalized) {
             current_hospitalized = 0;
         } else if (current_hospitalized.includes(", 2022") || current_hospitalized.includes(", 2021") || current_hospitalized.includes(", 2020")) {
@@ -256,17 +239,14 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             let last_update_current_hospitalized = [];
             last_update.push(current_hospitalized.substring(0, 12));
             last_update_current_hospitalized.push(current_hospitalized.substring(13));
-            // console.log('last_update', last_update, 'last_update_current_hospitalized', last_update_current_hospitalized);
             current_hospitalized = [last_update[0], last_update_current_hospitalized[0]];
         }
-        // find and add iso
         let iso;
         countryList.filter(country => {
             if (country.name === item[0]) {
                 iso = country.iso;
             } else return;
         })
-
 
         const dataV = {
             country: item[0],
@@ -287,9 +267,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             })
         }
     })
-    // console.log(finalObj_current_hospitalized);
     const current_hospitalized_to_write = { "current_hospitalized": finalObj_current_hospitalized };
-    fs.writeFile('./data/current_hospitalized.json', JSON.stringify(current_hospitalized_to_write), (err) => {
+    fs.writeFile('../data/current_hospitalized.json', JSON.stringify(current_hospitalized_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'current_hospitalized');
     });
@@ -301,12 +280,9 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         options_current_icu.map((option_current_icu) => option_current_icu.textContent)
     );
     await browser_current_icu.close();
-    // console.log(options_current_icu.length);
     const finalData_current_icu = createGroups(options_current_icu, 35);
-    // console.log(finalData_current_icu);
     const finalObj_current_icu = finalData_current_icu.map(item => {
         let current_icu = item[2];
-        // console.log(current_icu);
         if (!current_icu) {
             current_icu = 0;
         } else if (current_icu.includes(", 2022") || current_icu.includes(", 2021") || current_icu.includes(", 2020")) {
@@ -314,17 +290,14 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             let last_update_current_icu = [];
             last_update.push(current_icu.substring(0, 12));
             last_update_current_icu.push(current_icu.substring(13));
-            // console.log('last_update', last_update, 'last_update_current_icu', last_update_current_icu);
             current_icu = [last_update[0], last_update_current_icu[0]];
         }
-        // find and add iso
         let iso;
         countryList.filter(country => {
             if (country.name === item[0]) {
                 iso = country.iso;
             } else return;
         })
-
 
         const dataV = {
             country: item[0],
@@ -345,9 +318,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             })
         }
     })
-    // console.log(finalObj_current_icu);
     const current_icu_to_write = { "current_icu": finalObj_current_icu };
-    fs.writeFile('./data/current_icu.json', JSON.stringify(current_icu_to_write), (err) => {
+    fs.writeFile('../data/current_icu.json', JSON.stringify(current_icu_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'current_icu');
     });
@@ -369,17 +341,14 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             let last_update_cases = [];
             last_update.push(cases.substring(0, 12));
             last_update_cases.push(cases.substring(13));
-            // console.log('last_update', last_update, 'last_update_cases', last_update_cases);
             cases = [last_update[0], last_update_cases[0]];
         }
-        // find and add iso
         let iso;
         countryList.filter(country => {
             if (country.name === item[0]) {
                 iso = country.iso;
             } else return;
         })
-
 
         const dataV = {
             country: item[0],
@@ -400,9 +369,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             })
         }
     })
-    // console.log(finalObj_cases);
     const cases_to_write = { "cases": finalObj_cases };
-    fs.writeFile('./data/cases.json', JSON.stringify(cases_to_write), (err) => {
+    fs.writeFile('../data/cases.json', JSON.stringify(cases_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'cases');
     });
@@ -424,17 +392,14 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             let last_update_deaths = [];
             last_update.push(deaths.substring(0, 12));
             last_update_deaths.push(deaths.substring(13));
-            // console.log('last_update', last_update, 'last_update_deaths', last_update_deaths);
             deaths = [last_update[0], last_update_deaths[0]];
         }
-        // find and add iso
         let iso;
         countryList.filter(country => {
             if (country.name === item[0]) {
                 iso = country.iso;
             } else return;
         })
-
 
         const dataV = {
             country: item[0],
@@ -455,9 +420,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             })
         }
     })
-    //console.log(finalObj_deaths);
     const deaths_to_write = { "deaths": finalObj_deaths };
-    fs.writeFile('./data/deaths.json', JSON.stringify(deaths_to_write), (err) => {
+    fs.writeFile('../data/deaths.json', JSON.stringify(deaths_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'deaths');
     });
@@ -480,16 +444,13 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             last_update.push(death_rate_7.substring(0, 12));
             last_update_death_rate_7.push(death_rate_7.substring(13));
             death_rate_7 = [last_update[0], last_update_death_rate_7[0]];
-            // console.log('last_update', last_update, 'last_update_death_rate_7', last_update_death_rate_7);
         }
-        // find and add iso
         let iso;
         countryList.filter(country => {
             if (country.name === item[0]) {
                 iso = country.iso;
             } else return;
         })
-
 
         const dataV = {
             country: item[0],
@@ -510,9 +471,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             })
         }
     })
-    // console.log(finalObj_death_rate_7);
     const death_rate_7_to_write = { "death_rate_7": finalObj_death_rate_7 };
-    fs.writeFile('./data/death_rate_7.json', JSON.stringify(death_rate_7_to_write), (err) => {
+    fs.writeFile('../data/death_rate_7.json', JSON.stringify(death_rate_7_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'death_rate_7');
     });
@@ -534,10 +494,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             let last_update_cumulative_fatality_rate = [];
             last_update.push(cumulative_fatality_rate.substring(0, 12));
             last_update_cumulative_fatality_rate.push(cumulative_fatality_rate.substring(13));
-            // console.log('last_update', last_update, 'last_update_cumulative_fatality_rate', last_update_cumulative_fatality_rate);
             cumulative_fatality_rate = [last_update[0], last_update_cumulative_fatality_rate[0]];
         }
-        // find and add iso
         let iso;
         countryList.filter(country => {
             if (country.name === item[0]) {
@@ -565,9 +523,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             })
         }
     })
-    // console.log(finalObj_cumulative_fatality_rate);
     const cumulative_fatality_rate_to_write = { "cumulative_fatality_rate": finalObj_cumulative_fatality_rate };
-    fs.writeFile('./data/cumulative_fatality_rate.json', JSON.stringify(cumulative_fatality_rate_to_write), (err) => {
+    fs.writeFile('../data/cumulative_fatality_rate.json', JSON.stringify(cumulative_fatality_rate_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'cumulative_fatality_rate');
     });
@@ -579,12 +536,9 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         options_new_tests.map((option_new_tests) => option_new_tests.textContent)
     );
     await browser_new_tests.close();
-    // console.log(options_new_tests.length);
     const finalData_new_tests = createGroups(options_new_tests, 135);
-    // console.log(finalData_new_tests);
     const finalObj_new_tests = finalData_new_tests.map(item => {
         let new_tests = item[2];
-        // console.log(new_tests);
         if (!new_tests) {
             new_tests = 0;
         } else if (new_tests.includes(", 2022") || new_tests.includes(", 2021") || new_tests.includes(", 2020")) {
@@ -592,17 +546,14 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             let last_update_new_tests = [];
             last_update.push(new_tests.substring(0, 12));
             last_update_new_tests.push(new_tests.substring(13));
-            // console.log('last_update', last_update, 'last_update_new_tests', last_update_new_tests);
             new_tests = [last_update[0], last_update_new_tests[0]];
         }
-        // find and add iso
         let iso;
         countryList.filter(country => {
             if (country.name === item[0]) {
                 iso = country.iso;
             } else return;
         })
-
 
         const dataV = {
             country: item[0],
@@ -623,9 +574,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             })
         }
     })
-    // console.log(finalObj_new_tests);
     const new_tests_to_write = { "new_tests": finalObj_new_tests };
-    fs.writeFile('./data/new_tests.json', JSON.stringify(new_tests_to_write), (err) => {
+    fs.writeFile('../data/new_tests.json', JSON.stringify(new_tests_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'new_tests');
     });
@@ -637,12 +587,9 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         options_vaccines_administered.map((option_vaccines_administered) => option_vaccines_administered.textContent)
     );
     await browser_vaccines_administered.close();
-    // console.log(options_vaccines_administered.length);
     const finalData_vaccines_administered = createGroups(options_vaccines_administered, 231);
-    // console.log(finalData_vaccines_administered);
     const finalObj_vaccines_administered = finalData_vaccines_administered.map(item => {
         let vaccines_administered = item[2];
-        // console.log(vaccines_administered);
         if (!vaccines_administered) {
             vaccines_administered = 0;
         } else if (vaccines_administered.includes(", 2022") || vaccines_administered.includes(", 2021") || vaccines_administered.includes(", 2020")) {
@@ -650,10 +597,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             let last_update_vaccines_administered = [];
             last_update.push(vaccines_administered.substring(0, 12));
             last_update_vaccines_administered.push(vaccines_administered.substring(13));
-            // console.log('last_update', last_update, 'last_update_vaccines_administered', last_update_vaccines_administered);
             vaccines_administered = [last_update[0], last_update_vaccines_administered[0]];
         }
-        // find and add iso
         let iso;
         countryList.filter(country => {
             if (country.name === item[0]) {
@@ -681,9 +626,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             })
         }
     })
-    // console.log(finalObj_vaccines_administered);
     const vaccines_administered_to_write = { "vaccines_administered": finalObj_vaccines_administered };
-    fs.writeFile('./data/vaccines_administered.json', JSON.stringify(vaccines_administered_to_write), (err) => {
+    fs.writeFile('../data/vaccines_administered.json', JSON.stringify(vaccines_administered_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'vaccines_administered');
     });
@@ -695,12 +639,9 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
         options_people_fully_vaccinated.map((option_people_fully_vaccinated) => option_people_fully_vaccinated.textContent)
     );
     await browser_people_fully_vaccinated.close();
-    // console.log(options_people_fully_vaccinated.length);
     const finalData_people_fully_vaccinated = createGroups(options_people_fully_vaccinated, 231);
-    // console.log(finalData_people_fully_vaccinated);
     const finalObj_people_fully_vaccinated = finalData_people_fully_vaccinated.map(item => {
         let people_fully_vaccinated = item[2];
-        // console.log(people_fully_vaccinated);
         if (!people_fully_vaccinated) {
             people_fully_vaccinated = 0;
         } else if (people_fully_vaccinated.includes(", 2022") || people_fully_vaccinated.includes(", 2021") || people_fully_vaccinated.includes(", 2020")) {
@@ -708,10 +649,8 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             let last_update_people_fully_vaccinated = [];
             last_update.push(people_fully_vaccinated.substring(0, 12));
             last_update_people_fully_vaccinated.push(people_fully_vaccinated.substring(13));
-            // console.log('last_update', last_update, 'last_update_people_fully_vaccinated', last_update_people_fully_vaccinated);
             people_fully_vaccinated = [last_update[0], last_update_people_fully_vaccinated[0]];
         }
-        // find and add iso
         let iso;
         countryList.filter(country => {
             if (country.name === item[0]) {
@@ -739,16 +678,15 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
             })
         }
     })
-    // console.log(finalObj_people_fully_vaccinated);
     const people_fully_vaccinated_to_write = { "people_fully_vaccinated": finalObj_people_fully_vaccinated };
-    fs.writeFile('./data/people_fully_vaccinated.json', JSON.stringify(people_fully_vaccinated_to_write), (err) => {
+    fs.writeFile('../data/people_fully_vaccinated.json', JSON.stringify(people_fully_vaccinated_to_write), (err) => {
         if (err) throw err;
         console.log('The file has been saved!', 'people_fully_vaccinated');
     });
 
 
     final.push({ "total_cases": finalObj_total_cases }, { "total_deaths": finalObj_total_deaths }, { "total_hospitalized": finalObj_current_hospitalized }, { "total_icu": finalObj_current_icu }, { "daily_cases": finalObj_cases }, { "daily_deaths": finalObj_deaths }, { "fatality_rate_7_day_avg": finalObj_death_rate_7 }, { "cumulative_fatality_rate": finalObj_cumulative_fatality_rate }, { "daily_tests": finalObj_new_tests }, { "vaccines_administered": finalObj_vaccines_administered }, { "fully_vaccinated_people": finalObj_people_fully_vaccinated });
-    fs.writeFile('./data/data.json', JSON.stringify(final), (err) => {
+    fs.writeFile('../data/data.json', JSON.stringify(final), (err) => {
         if (err) throw err;
         console.log('The file has been saved!');
     });
