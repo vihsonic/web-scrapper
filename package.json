@@ -15,5 +15,8 @@
   "dependencies": {
     "express": "^4.17.2",
     "puppeteer": "^13.1.2"
+  },
+  "devDependencies": {
+    "axios": "^0.25.0"
   }
 }
