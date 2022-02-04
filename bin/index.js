@@ -123,7 +123,7 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
 
     const browser_total_cases = await puppeteer.launch({
         headless:true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: ['--no-sandbox']
     })
     const page_total_cases = await browser_total_cases.newPage()
     await page_total_cases.goto(total_cases.URL, { waitUntil: 'networkidle2' });
