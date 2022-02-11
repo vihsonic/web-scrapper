@@ -9,6 +9,9 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const { deepStrictEqual } = require('assert');
 
+import chromium from "chrome-aws-lambda";
+import playwright from "playwright-core";
+
 const createGroups = (arr, numGroups) => {
     const perGroup = Math.ceil(arr.length / numGroups);
     const finalArr = new Array(numGroups)
@@ -158,7 +161,10 @@ const getData = async (get_date, total_cases, total_deaths, current_hospitalized
     let final = [];
     let date;
 
-    const browser_get_date = await puppeteer.launch({ headless:true })
+    const browser_get_date = await puppeteer.launch({
+        headless:true,
+        args: ['--no-sandbox']
+    });
     const page_get_date = await browser_get_date.newPage()
     await page_get_date.goto(get_date.URL, { waitUntil: 'networkidle2' });
     const options_get_date = await page_get_date.$$eval('th[class="subdimension sortable endSubdimension"] > div', (options_get_date) =>
